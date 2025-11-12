@@ -1,0 +1,108 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\DELL> docker images
+REPOSITORY                                TAG                                                                           IMAGE ID       CREATED         SIZE
+bigdatatp                                 latest                                                                        ee1e18c511b4   11 hours ago    109MB
+mysql                                     latest                                                                        569c4128dfa6   3 weeks ago     1.27GB
+docker_kubernetes_project-app             latest                                                                        b73c848b3aba   8 months ago    1.67GB
+<none>                                    <none>                                                                        146682692a3a   9 months ago    1.09GB
+docker/desktop-kubernetes                 kubernetes-v1.31.4-cni-v1.6.0-critools-v1.31.1-cri-dockerd-v0.3.15-1-debian   1405239673ef   11 months ago   577MB
+registry.k8s.io/kube-apiserver            v1.31.4                                                                       ace6a943b058   11 months ago   125MB
+registry.k8s.io/kube-scheduler            v1.31.4                                                                       1a3081cb7d21   11 months ago   90.8MB
+registry.k8s.io/kube-controller-manager   v1.31.4                                                                       4bd1d4a449e7   11 months ago   118MB
+registry.k8s.io/kube-proxy                v1.31.4                                                                       1739b3febca3   11 months ago   126MB
+busybox                                   latest                                                                        498a000f370d   13 months ago   6.56MB
+registry.k8s.io/coredns/coredns           v1.11.3                                                                       9caabbf6238b   15 months ago   85.1MB
+registry.k8s.io/etcd                      3.5.15-0                                                                      a6dc63e6e8cf   15 months ago   208MB
+registry.k8s.io/pause                     3.10                                                                          ee6521f290b2   17 months ago   1.06MB
+docker/desktop-vpnkit-controller          dc331cb22850be0cdd97c84a9cfecaf44a1afb6e                                      7ecf567ea070   2 years ago     47MB
+B               > docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED             STATUS             PORTS                               NAMES
+7da9764c4c03   b73c848b3aba   "python app.py"          About an hour ago   Up About an hour                                       k8s_my-app-container_my-app-deployment2-d85f598cf-565mq_default_c8564d3a-baf3-4997-a5b1-f3df05423568_9
+62acc9974a1a   b73c848b3aba   "python app.py"          About an hour ago   Up About an hour                                       k8s_my-app-container_my-app-deployment2-d85f598cf-rf7fk_default_4fbc9e6d-6b80-4832-8161-9888e96a348f_9
+c7bc2798fef0   b73c848b3aba   "python app.py"          About an hour ago   Up About an hour                                       k8s_my-app-container_my-app-deployment2-d85f598cf-zfjkx_default_a07741df-6440-4f02-9715-de38c50c8213_9
+56e9307be26b   569c4128dfa6   "docker-entrypoint.s…"   10 hours ago        Up 10 hours                                            k8s_mysql_mysql-6f4598c87c-pkzq6_default_77a859a1-e9f5-41c7-9853-7a5b97d4e493_1
+b048e9f39c29   bigdatatp      "tail -f /dev/null"      11 hours ago        Up 59 minutes      0.0.0.0:8083->80/tcp                container3
+551f22504f5f   bigdatatp      "tail -f /dev/null"      11 hours ago        Up 59 minutes      0.0.0.0:8082->80/tcp                container2
+2930bab14b38   bigdatatp      "tail -f /dev/null"      11 hours ago        Up 59 minutes      0.0.0.0:8081->80/tcp                container1
+e9b4157d96b7   b7915b43e055   "python app.py"          8 months ago        Up 10 hours        0.0.0.0:5000->5000/tcp              flask_app
+e6093e238dd7   146682692a3a   "docker-entrypoint.s…"   8 months ago        Up 10 hours        0.0.0.0:3306->3306/tcp, 33060/tcp   mysql_container
+PS C:\Users\DELL> docker ps -a
+CONTAINER ID   IMAGE              COMMAND                  CREATED             STATUS                         PORTS                               NAMES
+48f4a06c762a   bigdatatp:latest   "bash"                   About an hour ago   Exited (0) About an hour ago                                       funny_lamarr
+7da9764c4c03   b73c848b3aba       "python app.py"          About an hour ago   Up About an hour                                                   k8s_my-app-container_my-app-deployment2-d85f598cf-565mq_default_c8564d3a-baf3-4997-a5b1-f3df05423568_9
+62acc9974a1a   b73c848b3aba       "python app.py"          About an hour ago   Up About an hour                                                   k8s_my-app-container_my-app-deployment2-d85f598cf-rf7fk_default_4fbc9e6d-6b80-4832-8161-9888e96a348f_9
+c7bc2798fef0   b73c848b3aba       "python app.py"          About an hour ago   Up About an hour                                                   k8s_my-app-container_my-app-deployment2-d85f598cf-zfjkx_default_a07741df-6440-4f02-9715-de38c50c8213_9
+56e9307be26b   569c4128dfa6       "docker-entrypoint.s…"   10 hours ago        Up 10 hours                                                        k8s_mysql_mysql-6f4598c87c-pkzq6_default_77a859a1-e9f5-41c7-9853-7a5b97d4e493_1
+b048e9f39c29   bigdatatp          "tail -f /dev/null"      11 hours ago        Up 59 minutes                  0.0.0.0:8083->80/tcp                container3
+551f22504f5f   bigdatatp          "tail -f /dev/null"      11 hours ago        Up 59 minutes                  0.0.0.0:8082->80/tcp                container2
+2930bab14b38   bigdatatp          "tail -f /dev/null"      11 hours ago        Up 59 minutes                  0.0.0.0:8081->80/tcp                container1
+e9b4157d96b7   b7915b43e055       "python app.py"          8 months ago        Up 10 hours                    0.0.0.0:5000->5000/tcp              flask_app
+e6093e238dd7   146682692a3a       "docker-entrypoint.s…"   8 months ago        Up 10 hours                    0.0.0.0:3306->3306/tcp, 33060/tcp   mysql_container
+PS C:\Users\DELL> docker network ls
+NETWORK ID     NAME                                DRIVER    SCOPE
+311ecd383713   bridge                              bridge    local
+af9026b15812   docker_kubernetes_project_default   bridge    local
+c72b4290cfc3   host                                host      local
+d1f2037a807b   mynetwork                           bridge    local
+206efce23a46   none                                null      local
+PS C:\Users\DELL> docker network inspect mynetwork
+[
+    {
+        "Name": "mynetwork",
+        "Id": "d1f2037a807b1b1f2b0fd670e39b318a3b8b675a8ec84f77634496697fe93332",
+        "Created": "2025-11-11T21:46:33.700953691Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "2930bab14b386ad912e4e97a478e9f8c9560998e02b8931a509fbe5c5f0df8c5": {
+                "Name": "container1",
+                "EndpointID": "6a4da7c49569d51804a0adbde6b7cbb35cddb874046de695829ccd1d66a61376",
+                "MacAddress": "02:42:ac:13:00:02",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            },
+            "551f22504f5f70596f18b7a72321a2159cd4c5fb7aac385bee0880ae55d78818": {
+                "Name": "container2",
+                "EndpointID": "26f508678faf90a110f9f291cb3d2ec17efd1b1f74619c1221474d7376e913fe",
+                "MacAddress": "02:42:ac:13:00:03",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            },
+            "b048e9f39c29c7e5b987d1fd847bf6df6e7f9e9f5f3adfdc4600622b1dc38b14": {
+                "Name": "container3",
+                "EndpointID": "ab7d42c2bf4a82f5984009a3ba92a2674b28b76d51fc492394d6f81f6c8dd78d",
+                "MacAddress": "02:42:ac:13:00:04",
+                "IPv4Address": "172.19.0.4/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]
+PS C:\Users\DELL> docker logs container1
+PS C:\Users\DELL> docker logs container2
+PS C:\Users\DELL> docker logs container3
+PS C:\Users\DELL> docker exec -it container1 bash
+root@2930bab14b38:/app# ls -l /app
+total 48
+-rwxr-xr-x 1 root root 48150 Nov  5 20:25 big_data_tp.pbix
+root@2930bab14b38:/app#
